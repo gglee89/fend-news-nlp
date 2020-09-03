@@ -1,13 +1,12 @@
 import { checkForName } from './js/nameChecker';
 import { handleSubmit } from './js/formHandler';
-import { initialLoad } from './js/initialLoad';
+import { loadResults } from './js/loadResults';
 
 import './styles/style.scss';
 
-initialLoad();
+loadResults();
 
 export {
     checkForName,
     handleSubmit,
-
 }

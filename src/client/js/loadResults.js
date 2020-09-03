@@ -2,25 +2,20 @@ import geoname from "./api/geoname";
 import weatherBit from "./api/weatherBit";
 import pixabay from "./api/pixabay";
 
-const initialLoad = async () => {
-    let placename = "Los Angeles";
-
+const loadResults = async (placename = "Los Angeles") => {
     try {
 
-        const geonameData = await geoname.fetchAPI(placename);
+        // const geonameData = await geoname.fetchAPI(placename);
         const weatherBitData = await weatherBit.fetchAPI(placename);
         const pixabayData = await pixabay.fetchAPI(placename);
 
         const { hits } = pixabayData;
-        console.log('geonameData', geonameData);
-        console.log('weatherBitData', weatherBitData);
-        console.log('pixabayData', pixabayData);
 
         // Section: Top
         const { data } = weatherBitData;
         let weatherPlacenameInput = document.getElementById('weather_placename');
         let weatherTemperatureInput = document.getElementById('weather_temperature');
-        let weatherCoordinatesInput = document.getElementById('weather_coordinates');
+        // let weatherCoordinatesInput = document.getElementById('weather_coordinates');
 
         weatherPlacenameInput.innerHTML = `Today's Weather in ${placename}`;
         if (data.length <= 0) {
@@ -29,7 +24,9 @@ const initialLoad = async () => {
             let weatherProps = data[0];
             const html = `
                 <div>${weatherProps.app_temp} °C</div>
-            `
+            `;
+
+            weatherTemperatureInput.innerHTML = "";
             weatherTemperatureInput.insertAdjacentHTML('beforeend', html);
         }
 
@@ -56,4 +53,4 @@ const initialLoad = async () => {
     }
 }
 
-export { initialLoad }
+export { loadResults }
