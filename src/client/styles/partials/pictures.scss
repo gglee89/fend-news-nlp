@@ -1,0 +1,9 @@
+.pictures {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &__title {
+        padding: 15px 0;
+    }
+}

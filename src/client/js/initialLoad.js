@@ -1,16 +1,9 @@
-import { countDown } from './util/countdown';
 import geoname from "./api/geoname";
 import weatherBit from "./api/weatherBit";
 import pixabay from "./api/pixabay";
 
-const handleSubmit = async (event) => {
-    event.preventDefault()
-
-    // Check what text was put into the form field
-    let placename = document.getElementById('placename').value;
-    let resultsContainer = document.getElementById('results_container');
-    // let datetime = new Date(inputValue)
-    // countDown(datetime);
+const initialLoad = async () => {
+    let placename = "Los Angeles";
 
     try {
 
@@ -23,18 +16,31 @@ const handleSubmit = async (event) => {
         console.log('weatherBitData', weatherBitData);
         console.log('pixabayData', pixabayData);
 
-        // Section: Temperature
+        // Section: Top
         const { data } = weatherBitData;
-        let weatherInput = document.getElementById('weather_temperature');
+        let weatherPlacenameInput = document.getElementById('weather_placename');
+        let weatherTemperatureInput = document.getElementById('weather_temperature');
+        let weatherCoordinatesInput = document.getElementById('weather_coordinates');
+
+        weatherPlacenameInput.innerHTML = `Today's Weather in ${placename}`;
         if (data.length <= 0) {
             throw Error("WeatherBIT API didn't return any data");
         } else {
             let weatherProps = data[0];
-            weatherInput.innerHTML = weatherProps.app_temp;
+            const html = `
+                <div>${weatherProps.app_temp} °C</div>
+            `
+            weatherTemperatureInput.insertAdjacentHTML('beforeend', html);
         }
 
+        // weatherCoordinatesInput.
+
         // Section: Images
-        resultsContainer.innerHTML = "";
+        let picturesTitle = document.getElementById('pictures_title');
+        let picturesContainer = document.getElementById('pictures_container');
+
+        picturesTitle.innerHTML = `Images from ${placename}`;
+        picturesContainer.innerHTML = "";
         hits.map(hit => {
             const html = `
                 <div class="card mx-1 my-1" style="width: 12rem;">
@@ -42,7 +48,7 @@ const handleSubmit = async (event) => {
                 </div>
             `;
 
-            resultsContainer.insertAdjacentHTML('beforeend', html);
+            picturesContainer.insertAdjacentHTML('beforeend', html);
         });
 
     } catch (error) {
@@ -50,4 +56,4 @@ const handleSubmit = async (event) => {
     }
 }
 
-export { handleSubmit }
+export { initialLoad }

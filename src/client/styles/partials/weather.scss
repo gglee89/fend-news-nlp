@@ -1,0 +1,32 @@
+.weather {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+
+    &__title {
+        color: #000;
+        font-size: 12px;
+        height: 40px;        
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: row;
+        max-height: 150px;
+    }
+
+    &__item {
+        margin-bottom: 5px;
+    }
+
+    &__box {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+
+    &__temp {
+        font-size: 60px;
+        font-weight: bold;        
+    }
+}

@@ -1,5 +1,6 @@
 const apiKEY = "18160801-773feb1c17fd2dc4291a58b35";
 const apiURL = "https://pixabay.com/api/";
+const category = "travel";
 
 /**
  * @description Fetch PIXABAY API
@@ -11,10 +12,9 @@ const fetchAPI = async (searchTerm) => {
     }
 
     try {
-        const response = await fetch(`${apiURL}?key=${apiKEY}&q=${searchTerm}`);
+        const response = await fetch(`${apiURL}?key=${apiKEY}&q=${searchTerm}&category=${category}`);
         const data = await response.json();
-
-        console.log('data', data);
+        return data;
 
     } catch (error) {
         console.log('Error PIXABAY API', error);

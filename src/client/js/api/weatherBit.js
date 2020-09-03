@@ -12,8 +12,7 @@ const fetchAPI = async (city) => {
     }
     const response = await fetch(`${apiURL}?key=${apiKey}&city=${city}`);
     const data = await response.json();
-
-    console.log('data', data);
+    return data;
 
 }
 

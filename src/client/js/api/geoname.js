@@ -12,8 +12,7 @@ const fetchAPI = async (placename) => {
 
     const response = await fetch(`${apiURL}?placename=${placename}&username=${username}`);
     const data = await response.json();
-
-    console.log('data', data);
+    return data;
 }
 
 export default { fetchAPI };
