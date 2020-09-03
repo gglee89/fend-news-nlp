@@ -2,4 +2,14 @@ footer {
     background: #252525;
     color: #e7e7e7;
     height: 70px;
+    padding: 10px 0;
+    position: relative;
+
+    p {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }

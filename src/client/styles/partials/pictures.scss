@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    min-height: 450px;
 
     &__title {
         padding: 15px 0;

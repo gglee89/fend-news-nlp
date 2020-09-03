@@ -19,10 +19,34 @@
         margin-bottom: 5px;
     }
 
+    &__box-line {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+    }
+
     &__box {
         display: flex;
         flex: 1;
         flex-direction: column;
+
+        input {
+            border: 1px solid #00000030;
+            margin-right: 10px;
+            width: 250px;
+        }
+
+        button {
+            margin: 10px 0;
+        }
+
+        &--fx1 {
+            flex: 1;
+        }
+        
+        &--fx3 {
+            flex: 3;
+        }
     }
 
     &__temp {
