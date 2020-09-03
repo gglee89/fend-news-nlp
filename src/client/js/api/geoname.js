@@ -6,6 +6,10 @@ const username = "demo";
  * @param {String} placename 
  */
 const fetchAPI = async (placename) => {
+    if (placename === "" || typeof (placename) !== "string") {
+        throw Error("'placename' paramenter in WeatherBit API is not provided");
+    }
+
     const response = await fetch(`${apiURL}?placename=${placename}&username=${username}`);
     const data = await response.json();
 

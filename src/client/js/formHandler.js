@@ -1,6 +1,7 @@
 import { countDown } from './util/countdown';
 import geoname from "./api/geoname";
 import weatherBit from "./api/weatherBit";
+import pixabay from "./api/pixabay";
 
 const handleSubmit = async (event) => {
     event.preventDefault()
@@ -14,6 +15,7 @@ const handleSubmit = async (event) => {
         let city = "Tallahassee";
         await geoname.fetchAPI(city);
         await weatherBit.fetchAPI(city);
+        await pixabay.fetchAPI(city);
 
     } catch (error) {
         console.log('Error', error);
