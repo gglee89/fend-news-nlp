@@ -1,19 +1,23 @@
+import { countDown } from './util/countdown';
+
 function handleSubmit(event) {
     event.preventDefault()
 
     // check what text was put into the form field
-    let formText = document.getElementById('name').value
+    let inputValue = document.getElementById('date_trip').value
+    let datetime = new Date(inputValue)
 
-    Client.checkForName(formText)
+    // Client.checkForName(formText)
 
-    console.log("::: Form Submitted :::")
-    fetch('http://localhost:8081/test')
-    .then(res => {
-        return res.json()
-    })
-    .then(function(data) {
-        document.getElementById('results').innerHTML = data.message
-    })
+    countDown(datetime);
+
+    // fetch('http://localhost:8081/test')
+    // .then(res => {
+    //     return res.json()
+    // })
+    // .then(function(data) {
+    //     document.getElementById('results').innerHTML = data.message
+    // })
 }
 
 export { handleSubmit }
