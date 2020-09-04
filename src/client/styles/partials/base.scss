@@ -1,13 +1,10 @@
 body {
     display: flex;
     flex-direction: column;
+    font-size: .875rem;
     min-height: 100vh;
 }
 
 main {
     flex: 2;
-}
-
-section {
-    margin: 50px auto;
 }

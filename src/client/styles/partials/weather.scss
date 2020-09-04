@@ -4,9 +4,14 @@
     padding: 5px;
 
     &__title {
-        color: #000;
-        font-size: 12px;
-        height: 40px;        
+        font-weight: bold;
+    }
+
+    &__input {
+        padding: 5px 20px;
+        width: 100%;
+        line-height: 16px;
+        margin: 10px 0;
     }
 
     &__body {
@@ -15,7 +20,7 @@
         max-height: 150px;
     }
 
-    &__item {
+    &__item {        
         margin-bottom: 5px;
     }
 
