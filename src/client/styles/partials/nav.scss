@@ -1,14 +1,29 @@
 .nav {
     &__description {
         display: block;
-        padding: .5rem 1rem;
+        padding: .2rem 1rem;
+
+        &-item-title {
+            font-weight: bold;
+        }
+    }
+
+    &__scrollable {
+        bottom: 0;
+        flex-wrap: nowrap;
+        margin: 0 !important;
+        overflow-y: auto;
+        position: absolute;
+        padding: 0;
+        top: 60px;
     }
 
     &-item {
         background-color: #343a400f;
         cursor: pointer;
-        padding: 1rem 0;
-        transition: all 300ms ease-in-out;        
+        margin-bottom: .1rem;
+        padding: 1rem 0;        
+        transition: all 300ms ease-in-out;
 
         &:hover {
             background-color: #343a4045;

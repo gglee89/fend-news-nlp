@@ -1,5 +1,5 @@
 import { checkForName } from './js/nameChecker';
-import { handleSubmit } from './js/formHandler';
+import { handleSubmit, handleBooking } from './js/formHandler';
 import { loadResults } from './js/loadResults';
 import { initialLoad } from './js/initialLoad';
 
@@ -11,4 +11,5 @@ loadResults();
 export {
     checkForName,
     handleSubmit,
+    handleBooking,
 }

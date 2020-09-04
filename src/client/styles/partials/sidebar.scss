@@ -14,7 +14,12 @@
         &:hover, &:focus {
             text-decoration: none;
         }
-    }    
+    }
+
+    &__container {
+        height: 100%;
+        position: relative;
+    }
 
     &-heading {
         font-size: .75rem;

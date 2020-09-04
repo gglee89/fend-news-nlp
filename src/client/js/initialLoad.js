@@ -8,7 +8,10 @@ const initialLoad = () => {
             cancelLabel: 'Clear'
         }
     }, function (start, end, label) {
+        drp.data('start', start);
+        drp.data('end', end);
         drp.val(`From ${start.format('M/D/Y')} to ${end.format('M/D/Y')}`);
+
         $('#weather_submit').attr('disabled', false);
     });
 }
