@@ -1,3 +1,13 @@
+import { daysDifference, countDown } from './util/countdown';
+
+const schedules = [
+    {
+        destination: "Los Angeles",
+        startDate: "09/05/2020",
+        endDate: "09/20/2020",
+    },
+];
+
 const loadHTML = ({ destination, startDate, endDate, duration, remainingTime }) => {
     return `
         <li class="nav-item">
@@ -58,9 +68,42 @@ const loadHTML = ({ destination, startDate, endDate, duration, remainingTime }) 
     `;
 }
 
-const loadSchedule = (schedule) => {
+/**
+ * @description Prepares schedule parameters to be inserted
+ * @param {String} startDate 
+ * @param {String} endDate 
+ */
+const formatSchedule = (startDate, endDate) => {
+    return {
+        startDate,
+        endDate,
+        duration: daysDifference(new Date(startDate), new Date(endDate)),
+        remainingTime: countDown(new Date(startDate))
+    }
+}
+
+/**
+ * @description Load schedule items from localStorage and initial list.
+ */
+const initialScheduleLoad = () => {
+    const sideMenuItemEl = document.getElementById('sidebarMenuItem');
+
+    schedules.map(schedule => {
+        let scheduleObj = {
+            ...schedule,
+            ...formatSchedule(schedule),
+        };
+        sideMenuItemEl.insertAdjacentHTML('beforeend', loadHTML(scheduleObj));
+    });
+}
+
+/**
+ * @description Load the schedule properties into the App Scheduler Sidebar list
+ * @param {Object} schedule 
+ */
+const appendSchedule = (schedule) => {
     const sideMenuItemEl = document.getElementById('sidebarMenuItem');
     sideMenuItemEl.insertAdjacentHTML('beforeend', loadHTML(schedule));
 }
 
-export { loadSchedule };
+export { initialScheduleLoad, appendSchedule };

@@ -1,7 +1,11 @@
 import { loadResults } from './loadResults';
-import { loadSchedule } from './loadSchedule';
+import { appendSchedule } from './schedule';
 import { countDown, daysDifference } from './util/countdown';
 
+/**
+ * @description Handle the Search button Click event
+ * @param {Object} event 
+ */
 const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -11,8 +15,13 @@ const handleSubmit = async (event) => {
     loadResults(placename);
 }
 
+/**
+ * @description Handle the Book button Click event
+ * @param {Object} event 
+ */
 const handleBooking = async (event) => {
     event.preventDefault();
+
     const $drp = $('#weather_drp');
     const $placename = $('#placename');
 
@@ -28,7 +37,7 @@ const handleBooking = async (event) => {
         remainingTime: countDown(new Date(start._d))
     }
 
-    loadSchedule(schedule);
+    appendSchedule(schedule);
 }
 
 export { handleSubmit, handleBooking }
