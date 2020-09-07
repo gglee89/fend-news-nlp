@@ -20,13 +20,20 @@
 
     &-item {
         background-color: #343a400f;
-        cursor: pointer;
         margin-bottom: .1rem;
         padding: 1rem 0;        
         transition: all 300ms ease-in-out;
+    }
+
+    &__btn-delete {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: 1rem 1rem 0;
 
         &:hover {
-            background-color: #343a4045;
+            color: red;
         }
     }
 }
