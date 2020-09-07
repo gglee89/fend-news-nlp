@@ -88,21 +88,38 @@ const formatSchedule = (startDate, endDate) => {
 const initialScheduleLoad = () => {
     const sideMenuItemEl = document.getElementById('sidebarMenuItem');
 
-    schedules.map(schedule => {
-        let scheduleObj = {
-            ...schedule,
-            ...formatSchedule(schedule),
-        };
-        sideMenuItemEl.insertAdjacentHTML('beforeend', loadHTML(scheduleObj));
-    });
+    let scheduleItem = localStorage.getItem('schedule');
+
+    if (scheduleItem) {
+        let schedules = JSON.parse(scheduleItem);
+
+        schedules.map(({ destination, startDate, endDate }) => {
+            let scheduleObj = {
+                destination,
+                ...formatSchedule(startDate, endDate),
+            };
+            sideMenuItemEl.insertAdjacentHTML('beforeend', loadHTML(scheduleObj));
+        });
+    }
 }
 
 /**
- * @description Load the schedule properties into the App Scheduler Sidebar list
+ * @description Load the schedule properties into the 
+ *              App Scheduler Sidebar list and the localStorage.
  * @param {Object} schedule 
  */
 const appendSchedule = (schedule) => {
     const sideMenuItemEl = document.getElementById('sidebarMenuItem');
+
+    let schedules = [];
+    let scheduleItem = localStorage.getItem('schedule');
+    if (scheduleItem) {
+        schedules = JSON.parse(scheduleItem);
+    }
+
+    schedules.push(schedule);
+    localStorage.setItem('schedule', JSON.stringify(schedules));
+
     sideMenuItemEl.insertAdjacentHTML('beforeend', loadHTML(schedule));
 }
 
