@@ -10,12 +10,16 @@ Remember that once you clone, you will still need to install everything:
 
 `cd` into your new folder and run:
 - `npm install`
+- `npm run build-dev` (for development)
+- `npm run build-prod && npm run start` (for production)
 
 ## Extended Options
+
 - Add END DATE and display length of trip;
 - Persist travel schedule items in LOCAL STORAGE;
 
 ## Author
+
 __Design & Development__  
 Giwoo G Lee  
 [Linkedin](https://linkedin.com/in/leegiwoo)  
