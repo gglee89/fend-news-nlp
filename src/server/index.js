@@ -1,20 +1,19 @@
-const express = require('express');
+/**
+ * SERVER FILE
+ */
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const PORT = 8080;
 
-const app = express();
+const app = require('./app');
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(express.static('dist'));
-
-app.get('/', (req, res) => {
-    res.sendFile('dist/index.html')
-});
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}!`);
-})
+  console.log(`Example app listening on port ${PORT}!`);
+});
